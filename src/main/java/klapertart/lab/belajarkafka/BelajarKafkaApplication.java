@@ -15,21 +15,6 @@ public class BelajarKafkaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BelajarKafkaApplication.class, args);
-
-		Properties properties = new Properties();
-		properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
-		properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
-		properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,StringSerializer.class.getName());
-
-
-		Producer<String, String> producer = new KafkaProducer<>(properties);
-		for (int i = 0; i < 100; i++){
-			ProducerRecord<String, String> record = new ProducerRecord<>("java-topic", "Data ke " + i);
-			producer.send(record);
-		}
-
-		producer.close();
-
 	}
 
 }
